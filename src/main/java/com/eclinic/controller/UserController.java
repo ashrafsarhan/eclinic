@@ -18,14 +18,20 @@ import com.eclinic.service.UserService;
  */
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
 	@RequestMapping("/patients")
-    public List<Patient> greeting() {
+    public List<Patient> getAllPatients() {
         return userService.getAllPatients();
+    }
+	
+	@RequestMapping("/save")
+    public Patient saveUser() {
+        return userService.saveUser();
     }
 
 }

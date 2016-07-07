@@ -24,5 +24,10 @@ public class UserService {
 	public List<Patient> getAllPatients() {
 		return (List<Patient>) patientDao.findAll();
 	}
+	
+    public Patient saveUser() {
+    	Patient patient = new Patient("xyz", 1, "abc", "123456");
+        return patientDao.save(patient);
+    }
 
 }
