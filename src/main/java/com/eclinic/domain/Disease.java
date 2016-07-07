@@ -28,19 +28,17 @@ public class Disease implements Serializable {
 	private String description;
 	private String infection;
 	private String chronic;
-	private String degree;
 	private Set<PatientDisease> patientDiseases = new HashSet<PatientDisease>(0);
 	
 	public Disease() {
 	}
 
-	public Disease(String name, String symptoms, String description, String infection, String chronic, String degree) {
+	public Disease(String name, String symptoms, String description, String infection, String chronic) {
 		this.name = name;
 		this.symptoms = symptoms;
 		this.description = description;
 		this.infection = infection;
 		this.chronic = chronic;
-		this.degree = degree;
 	}
 
 	@Id
@@ -99,15 +97,6 @@ public class Disease implements Serializable {
 		this.chronic = chronic;
 	}
 
-	@Column(name = "degree")
-	public String getDegree() {
-		return this.degree;
-	}
-
-	public void setDegree(String degree) {
-		this.degree = degree;
-	}
-
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "disease")
 	public Set<PatientDisease> getPatientDiseases() {
 		return this.patientDiseases;
@@ -120,8 +109,7 @@ public class Disease implements Serializable {
 	@Override
 	public String toString() {
 		return "Disease [id=" + id + ", name=" + name + ", symptoms=" + symptoms + ", description=" + description
-				+ ", infection=" + infection + ", chronic=" + chronic + ", degree=" + degree + ", patientDiseases="
-				+ patientDiseases + "]";
+				+ ", infection=" + infection + ", chronic=" + chronic + ", patientDiseases=" + patientDiseases + "]";
 	}
 
 }

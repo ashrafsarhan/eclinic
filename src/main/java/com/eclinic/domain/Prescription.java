@@ -26,15 +26,13 @@ public class Prescription implements Serializable {
 
 	private long id;
 	private PatientVisit patientVisit;
-	private Integer qty;
 	private Set<PrescriptionDrug> prescriptionDrugs = new HashSet<PrescriptionDrug>(0);
 
 	public Prescription() {
 	}
 
-	public Prescription(PatientVisit patientVisit, Integer qty, Set<PrescriptionDrug> prescriptionDrugs) {
+	public Prescription(PatientVisit patientVisit, Set<PrescriptionDrug> prescriptionDrugs) {
 		this.patientVisit = patientVisit;
-		this.qty = qty;
 		this.prescriptionDrugs = prescriptionDrugs;
 	}
 
@@ -59,15 +57,6 @@ public class Prescription implements Serializable {
 		this.patientVisit = patientVisit;
 	}
 
-	@Column(name = "qty")
-	public Integer getQty() {
-		return this.qty;
-	}
-
-	public void setQty(Integer qty) {
-		this.qty = qty;
-	}
-
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "prescription")
 	public Set<PrescriptionDrug> getPrescriptionDrugs() {
 		return this.prescriptionDrugs;
@@ -79,7 +68,7 @@ public class Prescription implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Prescription [id=" + id + ", patientVisit=" + patientVisit + ", qty=" + qty + ", prescriptionDrugs="
+		return "Prescription [id=" + id + ", patientVisit=" + patientVisit + ", prescriptionDrugs="
 				+ prescriptionDrugs + "]";
 	}
 

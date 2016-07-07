@@ -22,6 +22,7 @@ import javax.persistence.Table;
 public class PrescriptionDrug implements Serializable {
 
 	private long id;
+	private Integer qty;
 	private Drug drug;
 	private Prescription prescription;
 	
@@ -42,6 +43,15 @@ public class PrescriptionDrug implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	@Column(name = "qty")
+	public Integer getQty() {
+		return this.qty;
+	}
+
+	public void setQty(Integer qty) {
+		this.qty = qty;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -66,7 +76,8 @@ public class PrescriptionDrug implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PrescriptionDrug [id=" + id + ", drug=" + drug + ", prescription=" + prescription + "]";
+		return "PrescriptionDrug [id=" + id + ", qty=" + qty + ", drug=" + drug + ", prescription=" + prescription
+				+ "]";
 	}
 
 }

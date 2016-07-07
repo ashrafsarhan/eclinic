@@ -22,6 +22,7 @@ import javax.persistence.Table;
 public class PatientDisease implements Serializable {
 
 	private long id;
+	private String degree;
 	private Disease disease;
 	private PatientVisit patientVisit;
 
@@ -42,6 +43,15 @@ public class PatientDisease implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	@Column(name = "degree")
+	public String getDegree() {
+		return this.degree;
+	}
+
+	public void setDegree(String degree) {
+		this.degree = degree;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -66,7 +76,8 @@ public class PatientDisease implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PatientDisease [id=" + id + ", disease=" + disease + ", patientVisit=" + patientVisit + "]";
+		return "PatientDisease [id=" + id + ", degree=" + degree + ", disease=" + disease + ", patientVisit="
+				+ patientVisit + "]";
 	}
 
 }
