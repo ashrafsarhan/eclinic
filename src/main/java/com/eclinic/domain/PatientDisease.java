@@ -29,7 +29,8 @@ public class PatientDisease implements Serializable {
 	public PatientDisease() {
 	}
 
-	public PatientDisease(Disease disease, PatientVisit patientVisit) {
+	public PatientDisease(String degree, Disease disease, PatientVisit patientVisit) {
+		this.degree = degree;
 		this.disease = disease;
 		this.patientVisit = patientVisit;
 	}

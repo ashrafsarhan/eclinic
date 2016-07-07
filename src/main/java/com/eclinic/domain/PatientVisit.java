@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -29,7 +30,7 @@ public class PatientVisit implements Serializable {
 	private Patient patient;
 	private String date;
 	private Set<PatientDisease> patientDiseases = new HashSet<PatientDisease>(0);
-	private Set<Prescription> prescriptions = new HashSet<Prescription>(0);
+	private Prescription prescriptions;
 	
 	public PatientVisit() {
 	}
@@ -89,12 +90,12 @@ public class PatientVisit implements Serializable {
 		this.patientDiseases = patientDiseases;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patientVisit")
-	public Set<Prescription> getPrescriptions() {
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "patientVisit")
+	public Prescription getPrescriptions() {
 		return this.prescriptions;
 	}
 
-	public void setPrescriptions(Set<Prescription> prescriptions) {
+	public void setPrescriptions(Prescription prescriptions) {
 		this.prescriptions = prescriptions;
 	}
 

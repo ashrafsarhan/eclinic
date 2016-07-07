@@ -29,7 +29,8 @@ public class PrescriptionDrug implements Serializable {
 	public PrescriptionDrug() {
 	}
 	
-	public PrescriptionDrug(Drug drug, Prescription prescription) {
+	public PrescriptionDrug(Integer qty, Drug drug, Prescription prescription) {
+		this.qty = qty;
 		this.drug = drug;
 		this.prescription = prescription;
 	}
