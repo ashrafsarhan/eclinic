@@ -23,15 +23,13 @@ public class PatientDisease implements Serializable {
 
 	private long id;
 	private Disease disease;
-	private Patient patient;
 	private PatientVisit patientVisit;
 
 	public PatientDisease() {
 	}
 
-	public PatientDisease(Disease disease, Patient patient, PatientVisit patientVisit) {
+	public PatientDisease(Disease disease, PatientVisit patientVisit) {
 		this.disease = disease;
-		this.patient = patient;
 		this.patientVisit = patientVisit;
 	}
 
@@ -57,16 +55,6 @@ public class PatientDisease implements Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "patient_id", nullable = false)
-	public Patient getPatient() {
-		return this.patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "patient_visit_id", nullable = false)
 	public PatientVisit getPatientVisit() {
 		return this.patientVisit;
@@ -78,8 +66,7 @@ public class PatientDisease implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PatientDisease [id=" + id + ", disease=" + disease + ", patient=" + patient + ", patientVisit="
-				+ patientVisit + "]";
+		return "PatientDisease [id=" + id + ", disease=" + disease + ", patientVisit=" + patientVisit + "]";
 	}
 
 }

@@ -27,7 +27,6 @@ public class Patient implements Serializable {
 	private Integer gender;
 	private String address;
 	private String phone;
-	private Set<PatientDisease> patientDiseases = new HashSet<PatientDisease>(0);
 	private Set<PatientVisit> patientVisits = new HashSet<PatientVisit>(0);
 	
 	public Patient() {
@@ -88,15 +87,6 @@ public class Patient implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
-	public Set<PatientDisease> getPatientDiseases() {
-		return this.patientDiseases;
-	}
-
-	public void setPatientDiseases(Set<PatientDisease> patientDiseases) {
-		this.patientDiseases = patientDiseases;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
 	public Set<PatientVisit> getPatientVisits() {
 		return this.patientVisits;
 	}
@@ -108,7 +98,7 @@ public class Patient implements Serializable {
 	@Override
 	public String toString() {
 		return "Patient [id=" + id + ", name=" + name + ", gender=" + gender + ", address=" + address + ", phone="
-				+ phone + ", patientDiseases=" + patientDiseases + ", patientVisits=" + patientVisits + "]";
+				+ phone + ", patientVisits=" + patientVisits + "]";
 	}
 
 }
